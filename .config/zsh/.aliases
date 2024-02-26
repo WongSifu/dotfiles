@@ -1,4 +1,5 @@
 # general
+alias history='history 1'
 alias h='history'
 
 # dot files git repo
