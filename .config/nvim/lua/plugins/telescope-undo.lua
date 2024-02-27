@@ -8,7 +8,7 @@ return {
       },
     },
     keys = {
-      { "<leader>z", "<cmd>Telescope undo<cr>", desc = "undo history" },
+      { "<leader>fz", "<cmd>Telescope undo<cr>", desc = "undo history" },
     },
     opts = {
       opts = {
