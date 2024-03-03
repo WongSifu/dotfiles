@@ -52,7 +52,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-z/zsh-z.plugin.zsh
-source $ZDOTDIR/plugins/zsh-history-substring-search.zsh
+source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 fpath=($ZDOTDIR/zsh-completions/src $fpath)
 
 # Completion
