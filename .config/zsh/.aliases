@@ -3,7 +3,7 @@ alias history='history 1'
 alias h='history'
 
 # dot files git repo
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # zsh
 alias d='dirs -v'

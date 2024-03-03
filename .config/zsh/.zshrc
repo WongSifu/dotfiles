@@ -52,11 +52,12 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-z/zsh-z.plugin.zsh
+fpath=($ZDOTDIR/zsh-completions/src $fpath)
 
 # Completion
 autoload -U compinit; compinit
-_comp_options+=(globdots) # With hidden files
-source $ZDOTDIR/plugins/completion/completion.zsh
+# _comp_options+=(globdots) # With hidden files
+# source $ZDOTDIR/plugins/completion/completion.zsh
 
 # Start Starship
 eval "$(starship init zsh)"
