@@ -90,7 +90,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+"-" split h
 
 # split in vertical orientation
-bindsym $mod+"|" split v
+bindsym $mod+bar split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -204,7 +204,7 @@ bar {
                 inactive_workspace      $in-bgcolor     $in-bgcolor     $text
                 urgent_workspace        $u-bgcolor      $u-bgcolor      $text
         }
-     }
+    }
 
 # default gaps
 gaps inner 15
@@ -333,7 +333,7 @@ mode "$mode_gaps_left" {
 }
 
 # Transparent terminal
-exec_always picom -f b
+exec_always picom -f -b
 
 # Shortcut for Lockscreen
 bindsym $mod+x exec $HOME/.config/lock.sh
