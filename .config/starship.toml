@@ -29,7 +29,7 @@ format='[$user]($style)'
 [hostname]
 ssh_symbol = " "
 ssh_only=false
-show_always=true
+disabled = false
 format='[$ssh_symbol$hostname]($style) '
 
 [directory]
@@ -45,19 +45,16 @@ use_12hr = true
 disabled = false
 
 [package]
-format = 'via [$version](208 bold) '
-
-
+format = '[$version](208 bold) '
 
 [battery]
 disabled = false
 
-[[batter.display]]
+[[battery.display]]
 threshold = 10
 style = 'bold red'
 
-[[batter.display]]
-format = '[$symbol$percentage]($style) '
+[[battery.display]]
 threshold = 30
 style = 'bold yellow'
 
@@ -68,7 +65,6 @@ format = '\[[$symbol$branch]($style)\]'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
-
 
 # Languages
 [c]
@@ -100,53 +96,4 @@ format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 [rust]
 symbol = " "
 format = '\[[$symbol($version)]($style)\]'
-
-
-[os]
-format = "on [($name )]($style)"
-style = "bold blue"
-disabled = false
-
-[os.symbols]
-enable = true
-Alpaquita = " "
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = "󰍲 "
-
 
