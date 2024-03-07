@@ -48,15 +48,20 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+# ZSH History Substring Search UP/DOWN Arrow
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # Plugins
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-z/zsh-z.plugin.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-fpath=($ZDOTDIR/zsh-completions/src $fpath)
+# fpath=($ZDOTDIR/zsh-completions/src $fpath)
 
 # Completion
-autoload -U compinit; compinit
+# autoload -U compinit; compinit
 # _comp_options+=(globdots) # With hidden files
 # source $ZDOTDIR/plugins/completion/completion.zsh
 
