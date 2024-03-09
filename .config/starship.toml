@@ -29,8 +29,8 @@ format='[$user]($style)'
 [hostname]
 ssh_symbol = " "
 ssh_only=false
-disabled = false
-format='[$ssh_symbol$hostname]($style) '
+disabled=false
+format='[$hostname]($style) '
 
 [directory]
 read_only = " 󰌾"
