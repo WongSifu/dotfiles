@@ -30,7 +30,7 @@ format='[$user]($style)'
 ssh_symbol = " "
 ssh_only=false
 disabled=false
-format='[$ssh_symbol$hostname]($style) '
+format='[$hostname]($style) '
 
 [directory]
 read_only = " 󰌾"
