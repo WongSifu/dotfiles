@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","network"],
+	"modules-left": ["custom/launcher","custom/updates","network"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["bluetooth", "backlight","wireplumber","clock", "battery", "custom/power"],
     "network": {
@@ -67,14 +67,21 @@
         "format-plugged": "<span color='#00ff00'> </span> {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""],
-        "interval": 10,
+        "interval": 60,
     },
     "clock": {
         "format": "{: %Y-%m-%d %I:%M %p }",
     },
     "custom/launcher":{
         "format": " ",
-        "on-click": "wofi --show drun",
-        "on-click-right": "killall wofi"
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi"
+    },
+    "custom/updates":{
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 120,
+        "on-click": "kitty -e pacman -Syu && notify-send 'The system has been updated' "
     },
 }
