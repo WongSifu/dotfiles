@@ -1,0 +1,80 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/launcher","network"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["bluetooth", "backlight","wireplumber","clock", "battery", "custom/power"],
+    "network": {
+	    "tooltip": false,
+		"format-wifi": "<span color='#7cfc00'> </span> {essid} ({signalStrength}%) ↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}",
+        "format-ethernet": "<span color='#7cfc00'> </span> {ipaddr}/{cidr} ",
+        "format-disconnected": "<span color='#ff0000'> </span> No connection", 
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗 ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+        "tooltip-format-ethernet": "{ifname}  ",
+        "tooltip-format-disconnected": "Disconnected",
+		"interval": 5,
+    },
+    "custom/power": {
+        "format": "<span color='#0082fc'>⏻</span>",
+        "tooltip": false,
+        "on-click": "wlogout --protocol layer-shell"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": "<span color='#0082fc'></span> {device_alias}",
+        "format-connected-battery": "<span color='#0082fc'></span> {device_alias} ({device_battery_percentage}%)",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+	"wireplumber": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": " {volume}%",
+        "max-volumn": 150,
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+	"backlight": {
+		"tooltip": false,
+		"format": "<span color='#ffff00'></span> {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 90,
+            "ok": 70,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}   {capacity}% {time}",
+        "format-good": "<span color='#00ff00'>{icon}</span>  {capacity}% {time}",
+        "format-ok": "<span color='#ffffff'>{icon}</span>  {capacity}% {time}",
+        "format-warning": "<span color='#ffff00'>{icon}</span>  {capacity}% {time}",
+        "format-critical": "<span color='#ff0000'>{icon}</span>  {capacity}% {time}",
+        "format-charging": "<span color='#00ff00'> </span> {capacity}%",
+        "format-plugged": "<span color='#00ff00'> </span> {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 10,
+    },
+    "clock": {
+        "format": "{: %Y-%m-%d %I:%M %p }",
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "wofi --show drun",
+        "on-click-right": "killall wofi"
+    },
+}
