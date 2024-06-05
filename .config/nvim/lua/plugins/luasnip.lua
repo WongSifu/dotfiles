@@ -1,91 +1,90 @@
 return {
-    {
-        "L3MON4D3/LuaSnip",
-        keys = function()
-            local keys = {
-                -- vim.keymap.set({ "i", "s" }, "<C-i>", function()
-                --     require("luasnip").jump(1)
-                -- end, { desc = "LuaSnip forward jump" })
-                --
-                -- vim.keymap.set({ "i", "s" }, "<M-i>", function()
-                --     require("luasnip").jump(-1)
-                -- end, { desc = "LuaSnip forward jump" })
-            }
-            return keys
-        end,
-        config = function()
-            local ls = require("luasnip")
-            local s = ls.snippet
-            local node = ls.snippet_node
-            local t = ls.text_node
-            local i = ls.insert_node
-            local func = ls.function_node
-            local choice = ls.choice_node
-            local dynamicn = ls.dynamic_node
+  {
+    "L3MON4D3/LuaSnip",
+    keys = function()
+      local keys = {
+        -- vim.keymap.set({ "i", "s" }, "<C-i>", function()
+        --     require("luasnip").jump(1)
+        -- end, { desc = "LuaSnip forward jump" })
+        --
+        -- vim.keymap.set({ "i", "s" }, "<M-i>", function()
+        --     require("luasnip").jump(-1)
+        -- end, { desc = "LuaSnip forward jump" })
+      }
+      return keys
+    end,
+    config = function()
+      local ls = require("luasnip")
+      local s = ls.snippet
+      local node = ls.snippet_node
+      local t = ls.text_node
+      local i = ls.insert_node
+      local func = ls.function_node
+      local choice = ls.choice_node
+      local dynamicn = ls.dynamic_node
 
-            local fmt = require("luasnip.extras.fmt").fmt
+      local fmt = require("luasnip.extras.fmt").fmt
 
-            ls.add_snippets("go", {
-                s({
-                    trig = "dumpJson",
-                    namr = "Dump JSON",
-                    dscr = "Print out JSON",
-                }, {
-                    t({}),
-                }),
-                s({
-                    trig = "iferr",
-                    namr = "if err != nil",
-                    dscr = "basic error handle",
-                }, {
-                    t({ "if err != nil {", "\treturn " }),
-                    i(1, "nil"),
-                    t({ "", "}" }),
-                }),
-            })
-        end,
+      ls.add_snippets("go", {
+        s({
+          trig = "dumpJson",
+          namr = "Dump JSON",
+          dscr = "Print out JSON",
+        }, {
+          t({}),
+        }),
+        s({
+          trig = "iferr",
+          namr = "if err != nil",
+          dscr = "basic error handle",
+        }, {
+          t({ "if err != nil {", "\treturn " }),
+          i(1, "nil"),
+          t({ "", "}" }),
+        }),
+      })
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-emoji",
     },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-emoji",
-        },
-        ---@param opts cmp.ConfigSchema
-        opts = function(_, opts)
-            local has_words_before = function()
-                unpack = unpack or table.unpack
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and
-                    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
 
-            local luasnip = require("luasnip")
-            local cmp = require("cmp")
+      local luasnip = require("luasnip")
+      local cmp = require("cmp")
 
-            opts.mapping = vim.tbl_extend("force", opts.mapping, {
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                        -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-                        -- this way you will only jump inside the snippet region
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    elseif has_words_before() then
-                        cmp.complete()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-            })
-        end,
-    },
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+            -- this way you will only jump inside the snippet region
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      })
+    end,
+  },
 }
