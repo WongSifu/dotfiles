@@ -13,18 +13,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { noremap = true, silent = true, desc
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "down center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "up center" })
 
-vim.keymap.set("n", "<leader>z", vim.cmd.UndotreeToggle, { noremap = true, silent = true, desc = "Toggle Undo Tree" })
-
--- Go Lang
-local wk = require("which-key")
-vim.cmd("autocmd FileType go lua WhichKeyGo()")
-function WhichKeyGo()
-  wk.register({
-    ["<leader>gf"] = { "<CMD>GoFillStruct<CR>", "Go Fill Struct" },
-    ["<leader>gt"] = { "<CMD>GoAddTag<CR>", "Go Add Tag" },
-    ["<leader>gct"] = { "<CMD>GoClearTag<CR>", "Go Clear Tag" },
-    ["<leader>gac"] = { "<CMD>GoCmt<CR>", "Go Comment" },
-    ["<leader>gg"] = { "<CMD>GoFmt<CR>", "Go Format" },
-    ["<leader>gd"] = { "<CMD>GoDoc<CR>", "Go Doc" },
-  })
-end
+-- JQ
+vim.keymap.set("v", "<leader>jj", ":'<,'>!jq<cr>", { noremap = true, silent = true, desc = "format JSON" })
+vim.keymap.set("v", "<leader>jc", ":'<,'>!jq -c<cr>", { noremap = true, silent = true, desc = "collapes JSON" })
+vim.keymap.set("v", "<leader>js", ":'<,'>!jq -S<cr>", { noremap = true, silent = true, desc = "sort JSON" })
