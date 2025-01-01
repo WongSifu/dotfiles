@@ -18,18 +18,19 @@ return {
         max_line_len = 0, -- max line length in golines format, Target maximum line length for golines
         tag_transform = "camelcase", -- can be transform option("snakecase", "camelcase", etc) check gomodifytags for details and more options
         tag_options = "json=omitempty", -- sets options sent to gomodifytags, i.e., json=omitempty
+        lsp_inlay_hints = { enable = false },
       })
       require("dap-go").setup({})
 
       -- Run gofmt + goimport on save
-      local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.go",
-        callback = function()
-          require("go.format").goimport()
-        end,
-        group = format_sync_grp,
-      })
+      -- local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   pattern = "*.go",
+      --   callback = function()
+      --     require("go.format").goimport()
+      --   end,
+      --   group = format_sync_grp,
+      -- })
     end,
     keys = {
       ["<leader>gf"] = { "<CMD>GoFillStruct<CR>", "Go Fill Struct" },

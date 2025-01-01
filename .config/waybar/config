@@ -1,8 +1,8 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/updates","network"],
+	"modules-left": ["custom/launcher","custom/updates","clock", "network"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["bluetooth", "backlight","wireplumber","clock", "battery", "custom/power"],
+	"modules-right": ["bluetooth", "backlight","wireplumber", "battery", "custom/power"],
     "network": {
 	    "tooltip": false,
 		"format-wifi": "<span color='#7cfc00'> </span> {essid} ({signalStrength}%) ↑ {bandwidthUpBytes} ↓ {bandwidthDownBytes}",
@@ -13,6 +13,7 @@
         "tooltip-format-ethernet": "{ifname}  ",
         "tooltip-format-disconnected": "Disconnected",
 		"interval": 5,
+        "on-click": "nm-connection-editor"
     },
     "custom/power": {
         "format": "<span color='#0082fc'>⏻</span>",
@@ -70,12 +71,12 @@
         "interval": 60,
     },
     "clock": {
-        "format": "{: %Y-%m-%d %I:%M %p }",
+        "format": "{:%Y-%m-%d %I:%M %p }",
     },
     "custom/launcher":{
         "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
+        "on-click": "wofi -I -show drun",
+        "on-click-right": "killall wofi"
     },
     "custom/updates":{
         "format": "{} Update(s)",

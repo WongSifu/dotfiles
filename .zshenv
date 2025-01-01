@@ -17,6 +17,10 @@ export HISTFILE="$ZDOTDIR/.zsh_history"
 
 # Go
 export GOBIN="$HOME/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+
+# Home Alias
+source $HOME/.config/zsh/.homeAliases
 
 
 
